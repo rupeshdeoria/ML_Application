@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<div class="formwrapper">
+    <h2 class="title">Linear Regression Multivariate Model</h2>
+    <form method="POST" action="/">
+        {{ form.csrf_token }}
+        <div class="form-field">{{ form.homeArea.label }} {{ form.homeArea(size=20) }}</div>
+        <div class="form-field">{{ form.bedRoom.label }} {{ form.bedRoom(size=20) }}</div>
+        <div class="form-field">{{ form.bathRoom.label }} {{ form.bathRoom(size=20) }}</div>
+        {{ form.submit }}
+        {% if form.pridict.data %}
+        <div class="form-field">Result: {{ form.pridict.data }}</div>
+        {% endif %}
+        
+    </form>
+</div>
+{% endblock %}
